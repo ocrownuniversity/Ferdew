@@ -923,7 +923,7 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
     <button class="hamburger" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
     <!-- Logo: show image if available, fallback to styled text -->
     <div style="flex:1;display:flex;align-items:center">
-      <span onclick="navigate('home')" style="font-family:'Poppins',sans-serif;font-weight:900;font-size:21px;color:#D2691E;cursor:pointer;letter-spacing:-0.5px;line-height:1;white-space:nowrap">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span>
+      <span onclick="navigate('home')" style="font-family:'Poppins',sans-serif;font-weight:900;font-size:21px;color:#0B1F3A;cursor:pointer;letter-spacing:-0.5px;line-height:1;white-space:nowrap">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span>
     </div>
     <div class="header-icons" style="display:flex;align-items:center;gap:4px">
       <button id="dark-mode-btn" onclick="toggleDarkMode()" title="Toggle dark/light mode">🌙</button>
@@ -1488,7 +1488,7 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
 <div id="page-login" class="page">
   <div class="auth-wrap">
     <div class="auth-card">
-      <div class="auth-logo"><span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:28px;color:#D2691E;letter-spacing:-0.5px;cursor:pointer" onclick="navigate('home')">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span></div>
+      <div class="auth-logo"><span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:28px;color:#0B1F3A;letter-spacing:-0.5px;cursor:pointer" onclick="navigate('home')">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span></div>
       <h2 class="auth-title">Welcome Back!</h2>
       <p class="auth-subtitle">Sign in to your Fedew Food Hub account</p>
       <button class="btn-google" onclick="loginWithGoogle()"><img src="https://www.google.com/favicon.ico" width="18" height="18"> Continue with Google</button>
@@ -1506,7 +1506,7 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
 <div id="page-register" class="page">
   <div class="auth-wrap">
     <div class="auth-card">
-      <div class="auth-logo"><span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:28px;color:#D2691E;letter-spacing:-0.5px;cursor:pointer" onclick="navigate('home')">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span></div>
+      <div class="auth-logo"><span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:28px;color:#0B1F3A;letter-spacing:-0.5px;cursor:pointer" onclick="navigate('home')">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span></div>
       <h2 class="auth-title">Create Account</h2>
       <p class="auth-subtitle">Join Fedew Food Hub and start shopping</p>
       <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="reg-name" type="text" placeholder="Your full name"></div>
@@ -1523,7 +1523,7 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
 <div id="page-forgot" class="page">
   <div class="auth-wrap">
     <div class="auth-card">
-      <div class="auth-logo"><span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:28px;color:#D2691E;letter-spacing:-0.5px;cursor:pointer" onclick="navigate('home')">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span></div>
+      <div class="auth-logo"><span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:28px;color:#0B1F3A;letter-spacing:-0.5px;cursor:pointer" onclick="navigate('home')">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span></div>
       <h2 class="auth-title">Forgot Password?</h2>
       <p class="auth-subtitle">Enter your email and we'll send you a password reset link right away.</p>
       <div id="forgot-form-wrap">
@@ -1546,7 +1546,7 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
 <div id="page-reset-password" class="page">
   <div class="auth-wrap">
     <div class="auth-card">
-      <div class="auth-logo"><span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:28px;color:#D2691E;letter-spacing:-0.5px;cursor:pointer" onclick="navigate('home')">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span></div>
+      <div class="auth-logo"><span style="font-family:'Poppins',sans-serif;font-weight:900;font-size:28px;color:#0B1F3A;letter-spacing:-0.5px;cursor:pointer" onclick="navigate('home')">FEDEW <span style="color:#2f7d32">FOOD HUB</span></span></div>
       <h2 class="auth-title">Create New Password</h2>
       <p class="auth-subtitle" id="reset-pw-subtitle">Enter your new password below.</p>
       <div id="reset-pw-form">
@@ -6090,7 +6090,7 @@ function renderPreorderDetailBody(p) {
     <div style="background:var(--gray-50);border-radius:10px;padding:12px;margin:10px 0;font-size:13px">
       <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gray-500)"><i class="fas fa-calendar"></i> Expected Arrival</span><strong>${arrivalStr}</strong></div>
       ${p.estimatedDeliveryTime ? `<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gray-500)"><i class="fas fa-truck"></i> Delivery Time</span><strong>${escHtml(p.estimatedDeliveryTime)}</strong></div>` : ''}
-      <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gray-500)"><i class="fas fa-box"></i> Shipping Cost</span><strong>₦${(p.shippingCost||0).toLocaleString()}</strong></div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--gray-500)"><i class="fas fa-box"></i> Shipping Cost (per item)</span><strong>₦${(p.shippingCost||0).toLocaleString()}</strong></div>
       ${remaining!=null ? `<div style="display:flex;justify-content:space-between"><span style="color:var(--gray-500)"><i class="fas fa-cubes"></i> Available Slots</span><strong style="color:${remaining<=5?'#ef4444':'inherit'}">${remaining} left</strong></div>` : ''}
     </div>
     ${specsLines.length ? `<div style="margin-bottom:10px"><div style="font-weight:800;font-size:13px;margin-bottom:6px">Specifications</div>${specsLines.map(l=>`<div style="font-size:12px;color:var(--gray-600);padding:3px 0;border-bottom:1px solid var(--gray-100)">${escHtml(l)}</div>`).join('')}</div>` : ''}
@@ -6159,12 +6159,13 @@ function updatePreorderTotalSummary(p) {
   const el = document.getElementById('po-total-summary');
   if (!el || !p) return;
   const itemTotal = (p.price||0) * _poDraft.qty;
-  const grand = itemTotal + (p.shippingCost||0);
+  const shippingTotal = (p.shippingCost||0) * _poDraft.qty;
+  const grand = itemTotal + shippingTotal;
   const payNow = _poDraft.paymentType === 'deposit' ? Math.round(grand * (p.depositPercent/100)) : grand;
   const due = grand - payNow;
   el.innerHTML = `
     <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Item Total (×${_poDraft.qty})</span><span>₦${itemTotal.toLocaleString()}</span></div>
-    <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Shipping</span><span>₦${(p.shippingCost||0).toLocaleString()}</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Shipping (₦${(p.shippingCost||0).toLocaleString()} × ${_poDraft.qty})</span><span>₦${shippingTotal.toLocaleString()}</span></div>
     <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:800;border-top:1px solid rgba(210,105,30,.2);padding-top:6px;margin-top:4px"><span>Grand Total</span><span>₦${grand.toLocaleString()}</span></div>
     <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:900;color:var(--orange);margin-top:4px"><span>Pay Now</span><span>₦${payNow.toLocaleString()}</span></div>
     ${due>0 ? `<div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500)"><span>Balance Due Later</span><span>₦${due.toLocaleString()}</span></div>` : ''}
@@ -6209,7 +6210,8 @@ window.submitPreorderOrder = async function() {
   if (_poDraft.paymentMethod === 'bank' && !_poDraft.proof) return showToast('Please upload proof of payment','error');
 
   const itemTotal = (p.price||0) * _poDraft.qty;
-  const grand = itemTotal + (p.shippingCost||0);
+  const shippingTotal = (p.shippingCost||0) * _poDraft.qty;
+  const grand = itemTotal + shippingTotal;
   const payNow = _poDraft.paymentType === 'deposit' ? Math.round(grand * ((p.depositPercent||0)/100)) : grand;
 
   if (_poDraft.paymentMethod === 'wallet' && _walletBalance < payNow) {
@@ -6270,7 +6272,7 @@ async function createPreorderOrder(p, payNow, grand, method, paystackRef) {
       buyerName: currentUser.displayName || currentUser.email.split('@')[0],
       buyerPhone,
       preorderProductId: p.id, productName: p.name||'', productImage: (p.images&&p.images[0])||'',
-      quantity: _poDraft.qty, unitPrice: p.price||0, shippingCost: p.shippingCost||0,
+      quantity: _poDraft.qty, unitPrice: p.price||0, shippingCost: (p.shippingCost||0) * _poDraft.qty,
       totalAmount: grand, paymentType: _poDraft.paymentType, amountPaid: payNow, amountDue: Math.max(0, grand-payNow),
       paymentMethod: method, paymentProof: _poDraft.proof || null, paystackRef: paystackRef || null,
       status: initialStatus, cancellable: true,
