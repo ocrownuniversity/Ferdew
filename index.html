@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root {
-  --maywill-logo: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23f2994a%27/%3E%3Cstop offset=%271%27 stop-color=%27%232f7d32%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27url(%23g)%27/%3E%3Ctext x=%2750%27 y=%2768%27 font-family=%27Poppins,Arial,sans-serif%27 font-size=%2754%27 font-weight=%27800%27 fill=%27white%27 text-anchor=%27middle%27%3EF%3C/text%3E%3C/svg%3E');
+  --maywill-logo: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Cdefs%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%272C4468%27/%3E%3Cstop offset=%271%27 stop-color=%27%270B1F3A%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27url(%23g)%27/%3E%3Ctext x=%2750%27 y=%2768%27 font-family=%27Poppins,Arial,sans-serif%27 font-size=%2754%27 font-weight=%27800%27 fill=%27white%27 text-anchor=%27middle%27%3EF%3C/text%3E%3C/svg%3E');
   --orange: #D2691E;
   --orange-light: #F2994A;
   --orange-dark: #A0480F;
@@ -38,11 +38,11 @@
   --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
   --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  --gray-500: #3B5170;
+  --gray-600: #2C4468;
+  --gray-700: #1D3557;
+  --gray-800: #14274E;
+  --gray-900: #0B1F3A;
   --green: #16a34a;
   --red: #dc2626;
   --yellow: #f59e0b;
@@ -53,12 +53,12 @@
   --radius: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
-  --bg: #f5f5f5;
+  --bg: #B3E5FC;
   --surface: #ffffff;
   --surface2: #f9fafb;
   --border: #e5e7eb;
-  --text: #1f2937;
-  --text-muted: #6b7280;
+  --text: #14274E;
+  --text-muted: #3B5170;
 }
 body.dark-mode {
   --bg: #0f0f0f;
@@ -183,7 +183,7 @@ body.dark-mode .summary-row{border-color:#222!important;color:#d0d0d0!important}
 body.dark-mode #page-home,body.dark-mode #page-search,body.dark-mode #page-cart,body.dark-mode #page-checkout,body.dark-mode #page-orders,body.dark-mode #page-track,body.dark-mode #page-wishlist,body.dark-mode #page-profile,body.dark-mode #page-login,body.dark-mode #page-register,body.dark-mode #page-product,body.dark-mode #page-admin,body.dark-mode #page-about,body.dark-mode #page-contact,body.dark-mode #page-faq,body.dark-mode #page-terms{background:#0f0f0f!important}
 body.dark-mode [style*="background:#fff"],body.dark-mode [style*="background: #fff"],body.dark-mode [style*="background:white"],body.dark-mode [style*="background:#f9fafb"],body.dark-mode [style*="background:#f5f5f5"]{background:#1a1a1a!important}
 body.dark-mode [style*="background:var(--gray-50)"],body.dark-mode [style*="background:var(--gray-100)"]{background:#1e1e1e!important}
-body.dark-mode [style*="color:#1f2937"],body.dark-mode [style*="color:var(--gray-800)"]{color:#f0f0f0!important}
+body.dark-mode [style*="color:#14274E"],body.dark-mode [style*="color:var(--gray-800)"]{color:#f0f0f0!important}
 body.dark-mode [style*="color:var(--gray-500)"],body.dark-mode [style*="color:var(--gray-600)"]{color:#888!important}
 body.dark-mode .banner-card,body.dark-mode .admin-stat-card{background:#1a1a1a!important;border-color:#222!important}
 body.dark-mode .pc-sold-row .pc-bar-bg{background:#222!important}
@@ -534,17 +534,17 @@ body.dark-mode .skel-img::after{background-color:var(--surface)}
 .chat-messages{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:8px;background:#f8f8f8}
 .chat-msg{max-width:82%;padding:9px 13px;border-radius:12px;font-size:13px;line-height:1.5;word-break:break-word;animation:msgPop .2s ease}
 @keyframes msgPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.chat-msg.bot{background:#fff;color:#1f2937;border-radius:4px 12px 12px 12px;align-self:flex-start;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.chat-msg.bot{background:#fff;color:#14274E;border-radius:4px 12px 12px 12px;align-self:flex-start;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .chat-msg.user{background:var(--orange);color:#fff;border-radius:12px 12px 4px 12px;align-self:flex-end}
 .chat-msg.human-agent{background:#1e40af;color:#fff;border-radius:4px 12px 12px 12px;align-self:flex-start}
 .chat-msg.system{background:#f0fdf4;color:#15803d;font-size:11px;text-align:center;align-self:center;border-radius:99px;padding:4px 12px;font-weight:700;border:1px solid #bbf7d0}
 .chat-msg-time{font-size:10px;opacity:.55;margin-top:3px}
 .chat-transfer-card{background:#fff;border:2px solid var(--orange);border-radius:10px;padding:12px;margin:6px 0;align-self:flex-start;max-width:90%;box-shadow:0 2px 8px rgba(210,105,30,.1)}
-.chat-transfer-card p{font-size:12px;color:#374151;margin-bottom:10px;line-height:1.5}
+.chat-transfer-card p{font-size:12px;color:#14274E;margin-bottom:10px;line-height:1.5}
 .chat-transfer-card .btn-human{width:100%;background:var(--orange);color:#fff;border:none;border-radius:8px;padding:9px;font-size:13px;font-weight:800;cursor:pointer;margin-bottom:6px}
 .chat-transfer-card .btn-wa{width:100%;background:#25d366;color:#fff;border:none;border-radius:8px;padding:9px;font-size:13px;font-weight:800;cursor:pointer}
 .chat-input-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #f0f0f0;background:#fff;flex-shrink:0;align-items:flex-end}
-.chat-input{flex:1;border:1.5px solid #e5e7eb;border-radius:10px;padding:9px 12px;font-size:13px;resize:none;outline:none;font-family:inherit;max-height:80px;background:#fff;color:#1f2937;transition:.2s}
+.chat-input{flex:1;border:1.5px solid #e5e7eb;border-radius:10px;padding:9px 12px;font-size:13px;resize:none;outline:none;font-family:inherit;max-height:80px;background:#fff;color:#14274E;transition:.2s}
 .chat-input:focus{border-color:var(--orange)}
 .chat-send{background:var(--orange);color:#fff;border:none;border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.2s}
 .chat-send:hover{background:var(--orange-dark)}
@@ -560,7 +560,7 @@ body.dark-mode .skel-img::after{background-color:var(--surface)}
 .support-badge{font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px}
 .badge-active{background:#dcfce7;color:#16a34a}
 .badge-pending{background:#fef3c7;color:#92400e}
-.badge-solved{background:#f3f4f6;color:#6b7280}
+.badge-solved{background:#f3f4f6;color:#3B5170}
 .badge-waiting{background:#fee2e2;color:#dc2626}
 @media(max-width:480px){#chatbot-window{width:calc(100vw - 28px);right:14px;bottom:120px;max-height:480px}}
 .chat-header{background:var(--orange);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
@@ -3140,12 +3140,13 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { getFirestore, collection, doc, addDoc, getDoc, getDocs, setDoc, updateDoc, deleteDoc, query, where, orderBy, limit, onSnapshot, serverTimestamp, writeBatch } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAepV3qyQ636hCJLs9_j_5JapYshRoC71g",
-  authDomain: "peterson-370b4.firebaseapp.com",
-  projectId: "peterson-370b4",
-  storageBucket: "peterson-370b4.firebasestorage.app",
-  messagingSenderId: "765375122475",
-  appId: "1:765375122475:web:ae848e3ba053e67ba92e6e"
+  apiKey: "AIzaSyDPabewBi_NmJWLLn4I-3TiSMottHAAuPA",
+  authDomain: "ferdew-secondary-school.firebaseapp.com",
+  databaseURL: "https://ferdew-secondary-school-default-rtdb.firebaseio.com",
+  projectId: "ferdew-secondary-school",
+  storageBucket: "ferdew-secondary-school.firebasestorage.app",
+  messagingSenderId: "213342031831",
+  appId: "1:213342031831:web:b0c9446f40b8f36cfd4592"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -7020,7 +7021,7 @@ window.viewOrderDetails = async function(docId) {
             <div style="font-size:11px;color:var(--gray-400);font-weight:700;text-transform:uppercase;letter-spacing:.5px">Order ID</div>
             <div style="font-size:15px;font-weight:900;color:var(--orange)">${o.orderId||docId.slice(0,10)}</div>
           </div>
-          <span style="background:${statusBg[statusKey]||'#f3f4f6'};color:${statusColors[statusKey]||'#374151'};font-size:12px;font-weight:800;padding:5px 12px;border-radius:99px">${(o.status||'pending').replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</span>
+          <span style="background:${statusBg[statusKey]||'#f3f4f6'};color:${statusColors[statusKey]||'#14274E'};font-size:12px;font-weight:800;padding:5px 12px;border-radius:99px">${(o.status||'pending').replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase())}</span>
         </div>
         <div style="font-size:12px;color:var(--gray-400);margin-top:4px">${o.createdAt ? new Date(o.createdAt.toDate()).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'}) : ''}</div>
       </div>
@@ -7746,7 +7747,7 @@ window.openSupportChat = async function(sessionId) {
         + '<div><div style="font-size:14px;font-weight:800">'+(chat.userName||'Guest')+'</div><div style="font-size:12px;color:var(--gray-500)">'+(chat.userEmail||'')+'</div></div>'
         + '<div style="display:flex;gap:6px;flex-wrap:wrap">'
           + '<button onclick="updateChatStatus(\''+sessionId+'\',\'active\')" style="font-size:11px;padding:5px 10px;background:#dcfce7;color:#16a34a;border:none;border-radius:6px;cursor:pointer;font-weight:700">🟢 Active</button>'
-          + '<button onclick="updateChatStatus(\''+sessionId+'\',\'solved\')" style="font-size:11px;padding:5px 10px;background:#f3f4f6;color:#6b7280;border:none;border-radius:6px;cursor:pointer;font-weight:700">✅ Solved</button>'
+          + '<button onclick="updateChatStatus(\''+sessionId+'\',\'solved\')" style="font-size:11px;padding:5px 10px;background:#f3f4f6;color:#3B5170;border:none;border-radius:6px;cursor:pointer;font-weight:700">✅ Solved</button>'
           + '<button onclick="joinAsHuman(\''+sessionId+'\')" style="font-size:11px;padding:5px 10px;background:var(--orange);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:700">👤 Join Chat</button>'
         + '</div>'
       + '</div>'
