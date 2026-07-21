@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ocrownuniversity.github.io/Ferdew/sitemap.xml

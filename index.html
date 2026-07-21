@@ -9,6 +9,8 @@
 <meta name="theme-color" content="#D2691E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fedew Food Hub">
+<meta property="og:url" content="https://ocrownuniversity.github.io/Ferdew/">
+<link rel="canonical" href="https://ocrownuniversity.github.io/Ferdew/">
 <meta property="og:title" content="Fedew Food Hub | Fresh Groceries & Foodstuff Delivered in Nigeria">
 <meta property="og:description" content="Ibadan's trusted online food and grocery store. Fresh produce, grains, spices, groceries and household essentials delivered fast across Nigeria.">
 <meta name="twitter:card" content="summary">
@@ -17,6 +19,32 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"GroceryStore","name":"Fedew Food Hub","address":{"@type":"PostalAddress","streetAddress":"Alakia","addressLocality":"Ibadan","addressRegion":"Oyo State","addressCountry":"NG"},"telephone":"+2347058990143","email":"ferdew31@gmail.com"}
 </script>
+
+<!-- ===== GOOGLE ANALYTICS 4 =====
+     Replace G-XXXXXXXXXX below with your real GA4 Measurement ID
+     (Google Analytics > Admin > Data Streams > your web stream). -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<!-- ===== META (FACEBOOK) PIXEL =====
+     Replace YOUR_PIXEL_ID below with your real Pixel ID
+     (Meta Events Manager > Data Sources > your pixel). -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'YOUR_PIXEL_ID');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"></noscript>
+
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -312,7 +340,8 @@ body.dark-mode .skel-img::after{background-color:var(--surface)}
 
 /* ====== EMPTY STATE ====== */
 .empty-state{text-align:center;padding:60px 20px;color:var(--gray-400)}
-.empty-state i{font-size:64px;margin-bottom:16px;color:var(--gray-300)}
+.empty-state-icon-wrap{width:96px;height:96px;border-radius:50%;background:var(--gray-50);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;border:1px dashed var(--gray-200)}
+.empty-state i{font-size:40px;margin-bottom:0;color:var(--orange-light)}
 .empty-state h3{font-size:18px;font-weight:700;color:var(--gray-500);margin-bottom:8px}
 .empty-state p{font-size:14px}
 
@@ -868,6 +897,10 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
 </style>
 </head>
 <body>
+<!-- OFFLINE STATUS BANNER -->
+<div id="offline-banner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:100000;background:#dc2626;color:#fff;text-align:center;font-size:12px;font-weight:700;padding:7px 10px">
+  <i class="fas fa-wifi" style="margin-right:6px"></i> You're offline — some features may not work until you reconnect
+</div>
 <!-- PWA INSTALL BANNER -->
 <div id="pwa-install-banner">
   <img class="pwa-banner-icon" src="icon-192.png" alt="Fedew Food Hub" style="border-radius:12px" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -975,6 +1008,8 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
       <div class="sidebar-item" onclick="navigate('mypreorders');toggleSidebar()"><i class="fas fa-calendar-check"></i> My Preorders</div>
       <div class="sidebar-item" onclick="navigate('wishlist');toggleSidebar()"><i class="fas fa-heart"></i> Wishlist</div>
       <div class="sidebar-item" onclick="navigate('wallet');toggleSidebar()" style="color:var(--green);font-weight:800"><i class="fas fa-wallet"></i> My Wallet <span id="sb-wallet-bal" style="margin-left:auto;font-size:11px;background:rgba(22,163,74,.15);color:var(--green);padding:2px 8px;border-radius:99px">₦0</span></div>
+      <div class="sidebar-item" onclick="navigate('referral');toggleSidebar()" style="color:var(--orange);font-weight:800"><i class="fas fa-gift"></i> Invite &amp; Earn</div>
+      <div class="sidebar-item" onclick="navigate('subscriptions');toggleSidebar()"><i class="fas fa-sync-alt"></i> My Subscriptions</div>
       <div class="sidebar-item" onclick="navigate('profile');toggleSidebar()"><i class="fas fa-user-circle"></i> Profile & Settings</div>
       <div class="sidebar-item" onclick="navigate('addresses');toggleSidebar()"><i class="fas fa-map-marker-alt"></i> Address Book</div>
       <div class="sidebar-item" onclick="navigate('track');toggleSidebar()"><i class="fas fa-truck"></i> Track Order</div>
@@ -1068,6 +1103,38 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
     </div>
     <div class="product-grid skel-wrap" id="trending-grid"><div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-line skeleton"></div><div class="skel-line short skeleton"></div><div class="skel-line price skeleton"></div><div class="skel-line btn skeleton"></div></div><div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-line skeleton"></div><div class="skel-line short skeleton"></div><div class="skel-line price skeleton"></div><div class="skel-line btn skeleton"></div></div><div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-line skeleton"></div><div class="skel-line short skeleton"></div><div class="skel-line price skeleton"></div><div class="skel-line btn skeleton"></div></div><div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-line skeleton"></div><div class="skel-line short skeleton"></div><div class="skel-line price skeleton"></div><div class="skel-line btn skeleton"></div></div></div>
   </div>
+  <!-- TESTIMONIALS -->
+  <div class="home-section">
+    <div class="home-section-header">
+      <span class="home-section-title">💬 What Our Customers Say</span>
+    </div>
+    <div style="display:flex;gap:12px;overflow-x:auto;padding:4px 2px 8px;scroll-snap-type:x mandatory">
+      <div style="flex:0 0 240px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--gray-200);border-radius:14px;padding:16px;box-shadow:var(--shadow-sm)">
+        <div style="color:#f59e0b;font-size:13px;margin-bottom:8px">★★★★★</div>
+        <p style="font-size:13px;color:var(--gray-600);line-height:1.5;margin-bottom:12px">"My rice and beans always arrive fresh and well packed. Fedew Food Hub has become my go-to for monthly groceries."</p>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0">B.A</div>
+          <div><div style="font-size:12px;font-weight:800">Bukola A.</div><div style="font-size:11px;color:var(--gray-400)">Ibadan</div></div>
+        </div>
+      </div>
+      <div style="flex:0 0 240px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--gray-200);border-radius:14px;padding:16px;box-shadow:var(--shadow-sm)">
+        <div style="color:#f59e0b;font-size:13px;margin-bottom:8px">★★★★★</div>
+        <p style="font-size:13px;color:var(--gray-600);line-height:1.5;margin-bottom:12px">"I ordered in bulk for a wedding and everything was delivered on time. Great prices and even better service."</p>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0">T.O</div>
+          <div><div style="font-size:12px;font-weight:800">Tunde O.</div><div style="font-size:11px;color:var(--gray-400)">Lagos</div></div>
+        </div>
+      </div>
+      <div style="flex:0 0 240px;scroll-snap-align:start;background:var(--surface);border:1px solid var(--gray-200);border-radius:14px;padding:16px;box-shadow:var(--shadow-sm)">
+        <div style="color:#f59e0b;font-size:13px;margin-bottom:8px">★★★★★</div>
+        <p style="font-size:13px;color:var(--gray-600);line-height:1.5;margin-bottom:12px">"Customer support responded fast on WhatsApp when I had a question about my order. Very trustworthy store."</p>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:34px;height:34px;border-radius:50%;background:#0B1F3A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0">C.N</div>
+          <div><div style="font-size:12px;font-weight:800">Chiamaka N.</div><div style="font-size:11px;color:var(--gray-400)">Abuja</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- RECENTLY VIEWED -->
   <div class="home-section" id="recently-viewed-section" style="display:none">
     <div class="home-section-header">
@@ -1103,7 +1170,7 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
     </div>
     <div class="product-grid" id="search-grid"></div>
     <div id="search-empty" class="empty-state hidden">
-      <i class="fas fa-search"></i>
+      <div class="empty-state-icon-wrap"><i class="fas fa-search"></i></div>
       <h3>No products found</h3>
       <p>Try different keywords or filters</p>
     </div>
@@ -1145,6 +1212,26 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
           <span class="detail-discount" id="detail-discount"></span>
         </div>
         <div class="detail-stock" id="detail-stock"></div>
+        <!-- Notify Me When Back In Stock -->
+        <div id="notify-stock-wrap" class="hidden" style="margin-bottom:12px">
+          <div id="notify-stock-form" style="display:flex;gap:8px">
+            <button class="btn-primary" style="background:#0B1F3A" onclick="requestStockNotify()"><i class="fas fa-bell"></i> Notify Me When Back In Stock</button>
+          </div>
+          <div id="notify-stock-done" class="hidden" style="font-size:13px;color:var(--green);font-weight:700;padding:8px 0"><i class="fas fa-check-circle"></i> We'll let you know as soon as it's back!</div>
+        </div>
+        <!-- Subscribe & Save -->
+        <div id="subscribe-save-wrap" style="background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:10px;padding:10px 12px;margin-bottom:12px">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:700;color:var(--gray-700)">
+            <input type="checkbox" id="subscribe-save-toggle" onchange="toggleSubscribeSave()" style="width:18px;height:18px;accent-color:var(--green)">
+            <span>🔁 Subscribe &amp; Save 10% — delivered monthly</span>
+          </label>
+          <div id="subscribe-save-freq" class="hidden" style="margin-top:8px;padding-left:26px">
+            <select class="form-input" id="subscribe-frequency" style="font-size:12px;padding:6px 8px">
+              <option value="monthly">Every month</option>
+              <option value="biweekly">Every 2 weeks</option>
+            </select>
+          </div>
+        </div>
 
         <!-- Size Selector -->
         <div id="size-selector-wrap" class="hidden" style="margin-bottom:14px">
@@ -1172,6 +1259,15 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
         </div>
         <!-- Bulk/Wholesale Request -->
         <button onclick="showBulkOrderModal()" style="width:100%;margin-top:8px;background:none;border:2px dashed var(--orange);color:var(--orange);border-radius:8px;padding:9px;font-size:13px;font-weight:700;cursor:pointer"><i class="fas fa-boxes"></i> Request Bulk / Wholesale Quote</button>
+        <!-- Frequently Bought Together -->
+        <div id="fbt-wrap" class="hidden" style="margin-top:14px;background:var(--gray-50);border-radius:10px;padding:12px">
+          <div style="font-size:13px;font-weight:800;color:var(--gray-700);margin-bottom:10px"><i class="fas fa-layer-group" style="color:var(--orange)"></i> Frequently Bought Together</div>
+          <div id="fbt-items"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px dashed var(--gray-200)">
+            <span style="font-size:13px;font-weight:700;color:var(--gray-600)">Total: <strong id="fbt-total" style="color:var(--orange)">₦0</strong></span>
+            <button class="btn-primary" style="width:auto;padding:9px 16px;font-size:13px" onclick="addBundleToCart()"><i class="fas fa-cart-plus"></i> Add Selected to Cart</button>
+          </div>
+        </div>
         <div style="background:var(--gray-50);border-radius:8px;padding:12px;font-size:13px;color:var(--gray-600);margin-top:10px">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><i class="fas fa-truck" style="color:var(--orange)"></i> Free delivery on orders above &#8358;150,000</div>
           <div style="display:flex;align-items:center;gap:8px"><i class="fas fa-shield-alt" style="color:var(--green)"></i> Secure payment & buyer protection</div>
@@ -1286,9 +1382,9 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
   <div class="cart-wrap">
     <div id="cart-items-list"></div>
     <div id="cart-empty" class="empty-state hidden">
-      <i class="fas fa-shopping-cart"></i>
+      <div class="empty-state-icon-wrap"><i class="fas fa-shopping-cart"></i></div>
       <h3>Your cart is empty</h3>
-      <p>Add items to your cart to get started</p>
+      <p>Looks like you haven't added anything to your cart yet. Let's fix that!</p>
       <button class="btn-primary" onclick="navigate('home')" style="margin-top:16px"><i class="fas fa-shopping-bag"></i> Start Shopping</button>
     </div>
     <div id="cart-summary-wrap" class="hidden">
@@ -1430,6 +1526,11 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
       </div>
       <div id="est-delivery-date" style="font-size:12px;color:var(--gray-500);margin-top:8px;text-align:center;display:none"><i class="fas fa-truck"></i> <span></span></div>
     </div>
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:12px 4px;margin-bottom:4px;font-size:11px;color:var(--gray-500)">
+      <span style="display:flex;align-items:center;gap:5px"><i class="fas fa-shield-alt" style="color:var(--green)"></i> Secure Payment</span>
+      <span style="display:flex;align-items:center;gap:5px"><i class="fas fa-undo-alt" style="color:var(--orange)"></i> Money-Back Promise</span>
+      <span style="display:flex;align-items:center;gap:5px"><i class="fas fa-lock" style="color:#0B1F3A"></i> Data Protected</span>
+    </div>
     <button class="btn-checkout" onclick="placeOrder()"><i class="fas fa-check-circle"></i> Place Order</button>
   </div>
 </div>
@@ -1443,9 +1544,10 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
   <div class="orders-wrap">
     <div id="orders-list"></div>
     <div id="orders-empty" class="empty-state hidden">
-      <i class="fas fa-box-open"></i>
+      <div class="empty-state-icon-wrap"><i class="fas fa-box-open"></i></div>
       <h3>No orders yet</h3>
-      <p>Your order history will appear here</p>
+      <p>Your order history will appear here once you place your first order</p>
+      <button class="btn-primary" onclick="navigate('home')" style="margin-top:16px"><i class="fas fa-shopping-bag"></i> Start Shopping</button>
     </div>
   </div>
 </div>
@@ -1477,10 +1579,22 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
   <div style="max-width:1400px;margin:0 auto;padding:16px">
     <div class="wishlist-grid" id="wishlist-grid"></div>
     <div id="wishlist-empty" class="empty-state hidden">
-      <i class="fas fa-heart-broken"></i>
+      <div class="empty-state-icon-wrap"><i class="fas fa-heart"></i></div>
       <h3>Wishlist is empty</h3>
-      <p>Save products you love for later</p>
+      <p>Tap the heart on any product to save it here for later</p>
+      <button class="btn-primary" onclick="navigate('home')" style="margin-top:16px"><i class="fas fa-shopping-bag"></i> Browse Products</button>
     </div>
+  </div>
+</div>
+
+<!-- 404 / NOT FOUND PAGE -->
+<div id="page-notfound" class="page">
+  <div style="max-width:420px;margin:0 auto;padding:60px 20px;text-align:center">
+    <div style="font-size:72px;font-weight:900;color:var(--orange-light);line-height:1;margin-bottom:8px">404</div>
+    <div class="empty-state-icon-wrap" style="margin-bottom:18px"><i class="fas fa-map-signs"></i></div>
+    <h3 style="font-size:19px;font-weight:800;color:var(--gray-700);margin-bottom:8px">Page Not Found</h3>
+    <p style="font-size:14px;color:var(--gray-500);margin-bottom:20px">The page you're looking for doesn't exist or may have moved.</p>
+    <button class="btn-primary" onclick="navigate('home')" style="max-width:220px;margin:0 auto"><i class="fas fa-home"></i> Back to Home</button>
   </div>
 </div>
 
@@ -1630,6 +1744,60 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
   </div>
 </div>
 
+<!-- INVITE & EARN (REFERRAL) PAGE -->
+<div id="page-referral" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigate('profile')"><i class="fas fa-arrow-left"></i></button>
+    <h2>🎁 Invite &amp; Earn</h2>
+  </div>
+  <div style="max-width:600px;margin:0 auto;padding:16px">
+    <div style="background:linear-gradient(135deg,#D2691E,#F2994A);color:#fff;border-radius:16px;padding:22px;margin-bottom:16px;text-align:center">
+      <div style="font-size:15px;font-weight:800;margin-bottom:6px">Give ₦200, Get ₦500!</div>
+      <div style="font-size:12px;opacity:.9;line-height:1.6">Share your link. When a friend signs up and places their first order, you earn ₦500 and they get a ₦200 welcome bonus — both credited straight to your wallets.</div>
+    </div>
+    <div class="admin-card">
+      <div class="admin-card-title">Your Referral Code</div>
+      <div id="referral-code-display" style="font-size:22px;font-weight:900;color:var(--orange);text-align:center;padding:10px;background:var(--gray-50);border-radius:10px;letter-spacing:2px">···</div>
+      <div style="margin-top:12px">
+        <div style="font-size:12px;font-weight:700;color:var(--gray-500);margin-bottom:6px">Your Referral Link</div>
+        <div style="display:flex;gap:8px">
+          <input class="form-input" id="referral-link-display" readonly style="flex:1;font-size:12px" onclick="this.select()">
+          <button class="btn-primary" style="width:auto;padding:10px 14px" onclick="copyReferralLink()"><i class="fas fa-copy"></i></button>
+        </div>
+      </div>
+      <button class="btn-primary" style="margin-top:12px;background:#25D366" onclick="shareReferralWhatsApp()"><i class="fab fa-whatsapp"></i> Share on WhatsApp</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px">
+      <div class="admin-card" style="text-align:center">
+        <div style="font-size:24px;font-weight:900;color:var(--orange)" id="referral-count">0</div>
+        <div style="font-size:12px;color:var(--gray-500);font-weight:700">Friends Referred</div>
+      </div>
+      <div class="admin-card" style="text-align:center">
+        <div style="font-size:24px;font-weight:900;color:var(--green)" id="referral-earnings">₦0</div>
+        <div style="font-size:12px;color:var(--gray-500);font-weight:700">Total Earned</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MY SUBSCRIPTIONS PAGE -->
+<div id="page-subscriptions" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="navigate('profile')"><i class="fas fa-arrow-left"></i></button>
+    <h2>🔁 My Subscriptions</h2>
+  </div>
+  <div style="max-width:600px;margin:0 auto;padding:16px">
+    <p style="font-size:12px;color:var(--gray-500);margin-bottom:14px">Products you've subscribed to for recurring delivery. Manage or cancel anytime — we'll never charge you without notice.</p>
+    <div id="subscriptions-list"></div>
+    <div id="subscriptions-empty" class="empty-state hidden">
+      <div class="empty-state-icon-wrap"><i class="fas fa-sync-alt"></i></div>
+      <h3>No active subscriptions</h3>
+      <p>Toggle "Subscribe &amp; Save" on any product page to set up recurring delivery</p>
+      <button class="btn-primary" onclick="navigate('home')" style="margin-top:16px"><i class="fas fa-shopping-bag"></i> Browse Products</button>
+    </div>
+  </div>
+</div>
+
 <!-- ADDRESSES PAGE -->
 <div id="page-addresses" class="page">
   <div class="page-header">
@@ -1651,6 +1819,7 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
     <div id="receipt-wrap" class="admin-card" style="text-align:left;margin-bottom:20px"></div>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <button class="btn-primary" onclick="printReceipt()"><i class="fas fa-print"></i> Print Receipt</button>
+      <button class="btn-secondary" onclick="downloadInvoicePDF('__last__')"><i class="fas fa-file-pdf"></i> Download PDF</button>
       <button class="btn-secondary" onclick="navigate('orders')"><i class="fas fa-box"></i> View Orders</button>
       <button class="btn-secondary" onclick="navigate('home')"><i class="fas fa-home"></i> Continue Shopping</button>
     </div>
@@ -1697,6 +1866,7 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
       <button class="admin-tab" onclick="switchAdminTab('wallets',this)">💰 Wallets</button>
       <button class="admin-tab" onclick="switchAdminTab('paystack',this)">⚡ Paystack</button>
       <button class="admin-tab" onclick="switchAdminTab('bankdetails',this)">🏦 Account Details</button>
+      <button class="admin-tab" onclick="switchAdminTab('extras',this)">📋 Extras</button>
     </div>
     <!-- PASSWORD RESET REQUESTS TAB -->
     <div id="admin-pwresets" class="admin-tab-content hidden">
@@ -1842,6 +2012,33 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
           <div class="bank-info" id="acc-preview-box" style="margin-top:0">
             <p style="color:var(--gray-400)">Fill in the fields above to see a preview</p>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXTRAS TAB: Back-in-Stock Requests + Subscriptions -->
+    <div id="admin-extras" class="admin-tab-content hidden">
+      <div class="admin-card">
+        <div class="admin-card-title">
+          <span>🔔 Back-in-Stock Requests</span>
+          <button onclick="loadAdminExtras()" style="background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer"><i class="fas fa-sync-alt"></i> Refresh</button>
+        </div>
+        <p style="font-size:12px;color:var(--gray-500);margin-bottom:14px">Customers waiting to be notified when an out-of-stock item is restocked. Reach out to them once you update stock.</p>
+        <div style="overflow-x:auto">
+          <table class="admin-table" style="min-width:520px">
+            <thead><tr><th>Product</th><th>Customer</th><th>Requested</th><th>Status</th></tr></thead>
+            <tbody id="admin-stocknotify-body"><tr><td colspan="4" style="text-align:center;color:var(--gray-400);padding:20px"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="admin-card" style="margin-top:14px">
+        <div class="admin-card-title">🔁 Active Subscriptions</div>
+        <p style="font-size:12px;color:var(--gray-500);margin-bottom:14px">Customers on "Subscribe & Save" recurring delivery. Since this is a static site, renewals aren't auto-charged — check this list and follow up with customers as each date approaches.</p>
+        <div style="overflow-x:auto">
+          <table class="admin-table" style="min-width:600px">
+            <thead><tr><th>Customer</th><th>Product</th><th>Frequency</th><th>Next Date</th><th>Status</th></tr></thead>
+            <tbody id="admin-subscriptions-body"><tr><td colspan="5" style="text-align:center;color:var(--gray-400);padding:20px"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -2510,6 +2707,11 @@ body{padding-bottom:65px!important;background:var(--bg)!important}
         <a href="#" target="_blank" class="social-btn ig"><i class="fab fa-instagram"></i></a>
         <a href="#" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social-btn tw"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:16px;flex-wrap:wrap">
+        <span style="background:rgba(255,255,255,.1);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:5px"><i class="fas fa-bolt" style="color:#00b5d8"></i> Paystack</span>
+        <span style="background:rgba(255,255,255,.1);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:5px"><i class="fas fa-university"></i> Bank Transfer</span>
+        <span style="background:rgba(255,255,255,.1);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:5px"><i class="fas fa-hand-holding-usd"></i> Pay on Delivery</span>
       </div>
     </div>
     <div class="footer-col">
@@ -3224,6 +3426,12 @@ function setLogos() {
   // site-logo img is hidden by default, SVG shows always
 }
 setLogos();
+updateOfflineBanner();
+// Capture referral code from URL (?ref=CODE) for use at signup time
+try {
+  const refParam = new URLSearchParams(window.location.search).get('ref');
+  if (refParam) localStorage.setItem('pendingReferralCode', refParam.toUpperCase());
+} catch(e) {}
 
 // ===== AUTH =====
 onAuthStateChanged(auth, async (user) => {
@@ -3318,7 +3526,19 @@ window.doRegister = async function() {
   if(pass.length<6) return showToast('Password must be at least 6 characters','error');
   try {
     const cred = await createUserWithEmailAndPassword(auth, email, pass);
-    await setDoc(doc(db,'users',cred.user.uid), { name, email, phone, createdAt: serverTimestamp() });
+    const referralCode = 'FEDEW'+cred.user.uid.slice(0,6).toUpperCase();
+    const userDoc = { name, email, phone, createdAt: serverTimestamp(), referralCode };
+    const pendingRef = localStorage.getItem('pendingReferralCode');
+    if (pendingRef && pendingRef !== referralCode) {
+      try {
+        const q = query(collection(db,'users'), where('referralCode','==',pendingRef));
+        const snap = await getDocs(q);
+        if (!snap.empty) { userDoc.referredByUid = snap.docs[0].id; userDoc.referralRewarded = false; }
+      } catch(e) {}
+      localStorage.removeItem('pendingReferralCode');
+    }
+    await setDoc(doc(db,'users',cred.user.uid), userDoc);
+    trackEvent('sign_up', { method: 'email' });
     showToast('Account created! Welcome to Fedew Food Hub!');
     navigate('home');
   } catch(e) {
@@ -3334,11 +3554,24 @@ window.loginWithGoogle = async function() {
     try {
       const snap = await getDoc(doc(db, 'users', cred.user.uid));
       if (!snap.exists()) {
-        await setDoc(doc(db, 'users', cred.user.uid), {
+        const referralCode = 'FEDEW'+cred.user.uid.slice(0,6).toUpperCase();
+        const userDoc = {
           name: cred.user.displayName || '',
           email: cred.user.email || '',
-          createdAt: serverTimestamp()
-        });
+          createdAt: serverTimestamp(),
+          referralCode
+        };
+        const pendingRef = localStorage.getItem('pendingReferralCode');
+        if (pendingRef && pendingRef !== referralCode) {
+          try {
+            const q = query(collection(db,'users'), where('referralCode','==',pendingRef));
+            const rsnap = await getDocs(q);
+            if (!rsnap.empty) { userDoc.referredByUid = rsnap.docs[0].id; userDoc.referralRewarded = false; }
+          } catch(e) {}
+          localStorage.removeItem('pendingReferralCode');
+        }
+        await setDoc(doc(db, 'users', cred.user.uid), userDoc);
+        trackEvent('sign_up', { method: 'google' });
       }
     } catch(e) {}
     showToast('Signed in with Google! 🎉');
@@ -3508,6 +3741,93 @@ function renderPWResets(list) {
 // Safe HTML escaping to prevent XSS in rendered content
 function escHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// ===== OFFLINE / ONLINE DETECTION =====
+function updateOfflineBanner() {
+  const b = document.getElementById('offline-banner');
+  if (!b) return;
+  b.style.display = navigator.onLine ? 'none' : 'block';
+}
+window.addEventListener('online', updateOfflineBanner);
+window.addEventListener('offline', updateOfflineBanner);
+
+// ===== ANALYTICS TRACKING =====
+// Safely fires GA4 + Meta Pixel events if those scripts have loaded (won't error if blocked/absent)
+function trackEvent(name, params) {
+  try { if (window.gtag) window.gtag('event', name, params || {}); } catch(e) {}
+  try {
+    if (window.fbq) {
+      const fbMap = { add_to_cart:'AddToCart', purchase:'Purchase', view_item:'ViewContent', begin_checkout:'InitiateCheckout', sign_up:'CompleteRegistration' };
+      window.fbq('track', fbMap[name] || name, params || {});
+    }
+  } catch(e) {}
+}
+
+// ===== FLY-TO-CART MICRO-ANIMATION =====
+// Animates a small dot from the clicked button to the cart icon for satisfying visual feedback.
+function flyToCart(sourceEl) {
+  try {
+    if (!sourceEl) return;
+    const target = document.getElementById('bnav-cart') || document.querySelector('.hicon[onclick*="cart"]');
+    if (!target) return;
+    const startRect = sourceEl.getBoundingClientRect();
+    const endRect = target.getBoundingClientRect();
+    const dot = document.createElement('div');
+    dot.style.cssText = `position:fixed;z-index:99999;width:14px;height:14px;border-radius:50%;background:var(--orange);left:${startRect.left+startRect.width/2-7}px;top:${startRect.top+startRect.height/2-7}px;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:transform .6s cubic-bezier(.2,.8,.3,1),opacity .6s ease`;
+    document.body.appendChild(dot);
+    requestAnimationFrame(()=>{
+      const dx = (endRect.left+endRect.width/2) - (startRect.left+startRect.width/2);
+      const dy = (endRect.top+endRect.height/2) - (startRect.top+startRect.height/2);
+      dot.style.transform = `translate(${dx}px, ${dy}px) scale(.3)`;
+      dot.style.opacity = '0.3';
+    });
+    setTimeout(()=>{
+      dot.remove();
+      target.style.transition = 'transform .25s ease';
+      target.style.transform = 'scale(1.3)';
+      setTimeout(()=>{ target.style.transform = 'scale(1)'; }, 220);
+    }, 600);
+  } catch(e) {}
+}
+
+// ===== CONFETTI CELEBRATION =====
+// Lightweight canvas confetti burst — no external library needed. Used on order success.
+function fireConfetti() {
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99998';
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    const colors = ['#D2691E','#F2994A','#16a34a','#2f7d32','#f59e0b','#ffffff'];
+    const pieces = Array.from({length:90}, () => ({
+      x: canvas.width/2 + (Math.random()-0.5)*80,
+      y: canvas.height*0.35,
+      vx: (Math.random()-0.5)*11,
+      vy: -Math.random()*11-4,
+      size: Math.random()*7+4,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      rot: Math.random()*360,
+      vr: (Math.random()-0.5)*14
+    }));
+    let frame = 0;
+    function tick() {
+      frame++;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      pieces.forEach(p=>{
+        p.vy += 0.32; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        ctx.save();
+        ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*.6);
+        ctx.restore();
+      });
+      if (frame < 110) requestAnimationFrame(tick);
+      else canvas.remove();
+    }
+    requestAnimationFrame(tick);
+  } catch(e) {}
 }
 
 // ===== FRIENDLY ERROR MESSAGES =====
@@ -3990,6 +4310,125 @@ async function debitWallet(uid, amount, type, description, refId) {
   return newBal;
 }
 
+// ===== REFER-A-FRIEND PROGRAM =====
+const REFERRAL_REFERRER_BONUS = 500;
+const REFERRAL_REFEREE_BONUS = 200;
+
+// Rewards both sides the first time a referred user completes an order.
+async function processReferralReward(orderTotal) {
+  if (!currentUser) return;
+  try {
+    const uRef = doc(db,'users',currentUser.uid);
+    const uSnap = await getDoc(uRef);
+    if (!uSnap.exists()) return;
+    const u = uSnap.data();
+    if (!u.referredByUid || u.referralRewarded) return;
+    // Credit the referee (this user) a welcome bonus
+    await creditWallet(currentUser.uid, REFERRAL_REFEREE_BONUS, 'referral_bonus', 'Welcome bonus for using a referral link', 'ref-'+currentUser.uid);
+    // Credit the referrer
+    await creditWallet(u.referredByUid, REFERRAL_REFERRER_BONUS, 'referral_bonus', 'Referral reward: your friend placed their first order', 'ref-'+currentUser.uid);
+    // Mark rewarded + update referrer stats
+    await updateDoc(uRef, { referralRewarded: true });
+    try {
+      const rRef = doc(db,'users',u.referredByUid);
+      const rSnap = await getDoc(rRef);
+      const rData = rSnap.exists() ? rSnap.data() : {};
+      await updateDoc(rRef, {
+        referralCount: (rData.referralCount||0) + 1,
+        referralEarnings: (rData.referralEarnings||0) + REFERRAL_REFERRER_BONUS
+      });
+    } catch(e) {}
+    await loadWalletBalance();
+    showToast(`🎉 You earned ₦${REFERRAL_REFEREE_BONUS} for using a referral link!`);
+  } catch(e) { console.warn('processReferralReward error', e); }
+}
+
+// Loads/generates the current user's referral code + stats for the Invite & Earn page
+window.loadReferralPage = async function() {
+  if (!currentUser) { navigate('login'); return; }
+  const codeEl = document.getElementById('referral-code-display');
+  const linkEl = document.getElementById('referral-link-display');
+  const countEl = document.getElementById('referral-count');
+  const earningsEl = document.getElementById('referral-earnings');
+  try {
+    const uRef = doc(db,'users',currentUser.uid);
+    const uSnap = await getDoc(uRef);
+    let u = uSnap.exists() ? uSnap.data() : {};
+    let code = u.referralCode;
+    if (!code) {
+      code = 'FEDEW'+currentUser.uid.slice(0,6).toUpperCase();
+      await updateDoc(uRef, { referralCode: code });
+    }
+    const link = window.location.origin + window.location.pathname + '?ref=' + code;
+    if(codeEl) codeEl.textContent = code;
+    if(linkEl) linkEl.value = link;
+    if(countEl) countEl.textContent = u.referralCount || 0;
+    if(earningsEl) earningsEl.textContent = '₦'+(u.referralEarnings || 0).toLocaleString();
+    window._referralLink = link;
+  } catch(e) { console.warn('loadReferralPage error', e); }
+};
+
+window.copyReferralLink = function() {
+  const input = document.getElementById('referral-link-display');
+  if(!input) return;
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard?.writeText(input.value).then(()=>{
+    showToast('Referral link copied!');
+  }).catch(()=>{
+    document.execCommand('copy');
+    showToast('Referral link copied!');
+  });
+};
+
+window.shareReferralWhatsApp = function() {
+  const link = window._referralLink || '';
+  const text = encodeURIComponent(`Shop fresh groceries at Fedew Food Hub! Use my link to sign up and we both earn wallet credit: ${link}`);
+  window.open(`https://wa.me/?text=${text}`, '_blank');
+};
+
+// ===== SUBSCRIBE & SAVE — MY SUBSCRIPTIONS PAGE =====
+window.loadMySubscriptions = async function() {
+  if (!currentUser) { navigate('login'); return; }
+  const list = document.getElementById('subscriptions-list');
+  const empty = document.getElementById('subscriptions-empty');
+  if(!list) return;
+  list.innerHTML = '<p style="text-align:center;color:var(--gray-400);padding:20px"><i class="fas fa-spinner fa-spin"></i></p>';
+  try {
+    const q = query(collection(db,'subscriptions'), where('uid','==',currentUser.uid));
+    const snap = await getDocs(q);
+    if (snap.empty) {
+      list.innerHTML = '';
+      if(empty) empty.classList.remove('hidden');
+      return;
+    }
+    if(empty) empty.classList.add('hidden');
+    list.innerHTML = snap.docs.map(d=>{
+      const s = d.data();
+      const nextDate = s.nextDate ? new Date(s.nextDate).toLocaleDateString('en-NG',{day:'numeric',month:'short',year:'numeric'}) : '—';
+      const isActive = s.status !== 'cancelled';
+      return `<div class="admin-card" style="margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:800;font-size:14px">${s.productName||'Product'}</div>
+            <div style="font-size:12px;color:var(--gray-500);margin-top:2px">Qty ${s.qty||1} · ${s.frequency==='biweekly'?'Every 2 weeks':'Every month'} · ₦${(s.price||0).toLocaleString()}</div>
+            <div style="font-size:11px;color:${isActive?'var(--green)':'var(--red)'};margin-top:4px;font-weight:700">${isActive?'● Active — next: '+nextDate:'Cancelled'}</div>
+          </div>
+          ${isActive?`<button onclick="cancelSubscription('${d.id}')" style="background:none;border:1px solid var(--red);color:var(--red);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer">Cancel</button>`:''}
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e) { list.innerHTML = '<p style="text-align:center;color:var(--red);padding:20px">Failed to load subscriptions</p>'; }
+};
+
+window.cancelSubscription = async function(subId) {
+  try {
+    await updateDoc(doc(db,'subscriptions',subId), { status: 'cancelled' });
+    showToast('Subscription cancelled');
+    loadMySubscriptions();
+  } catch(e) { showToast('Failed to cancel: '+friendlyError(e),'error'); }
+};
+
 // ---- Load wallet transaction history ----
 async function loadWalletTransactions() {
   if (!currentUser) return;
@@ -4183,6 +4622,44 @@ async function handlePaystackWalletSuccess(response, amount, refId) {
 }
 
 // ---- ADMIN: Load all wallet funding requests ----
+window.loadAdminExtras = async function() {
+  // Back-in-stock requests
+  const snBody = document.getElementById('admin-stocknotify-body');
+  if (snBody) {
+    snBody.innerHTML = skelTableRows(4, 4);
+    try {
+      const snap = await getDocs(collection(db,'stock_notify'));
+      if (snap.empty) {
+        snBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--gray-400);padding:20px">No requests yet</td></tr>';
+      } else {
+        snBody.innerHTML = snap.docs.map(d=>{
+          const r = d.data();
+          const date = r.createdAt ? new Date(r.createdAt.toDate()).toLocaleDateString() : '—';
+          return `<tr><td>${escHtml(r.productName||'—')}</td><td>${escHtml(r.email||'—')}</td><td>${date}</td><td>${r.notified?'<span style="color:var(--green);font-weight:700">Notified</span>':'<span style="color:var(--orange);font-weight:700">Waiting</span>'}</td></tr>`;
+        }).join('');
+      }
+    } catch(e) { snBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--red);padding:20px">Failed to load</td></tr>'; }
+  }
+  // Active subscriptions
+  const subBody = document.getElementById('admin-subscriptions-body');
+  if (subBody) {
+    subBody.innerHTML = skelTableRows(5, 4);
+    try {
+      const snap = await getDocs(collection(db,'subscriptions'));
+      if (snap.empty) {
+        subBody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--gray-400);padding:20px">No subscriptions yet</td></tr>';
+      } else {
+        subBody.innerHTML = snap.docs.map(d=>{
+          const s = d.data();
+          const nextDate = s.nextDate ? new Date(s.nextDate).toLocaleDateString() : '—';
+          const active = s.status !== 'cancelled';
+          return `<tr><td>${escHtml(s.userEmail||'—')}</td><td>${escHtml(s.productName||'—')}</td><td>${s.frequency==='biweekly'?'Bi-weekly':'Monthly'}</td><td>${nextDate}</td><td>${active?'<span style="color:var(--green);font-weight:700">Active</span>':'<span style="color:var(--red);font-weight:700">Cancelled</span>'}</td></tr>`;
+        }).join('');
+      }
+    } catch(e) { subBody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--red);padding:20px">Failed to load</td></tr>'; }
+  }
+};
+
 window.loadAdminWallets = async function() {
   if (!isAdmin) return;
   // Load funding requests
@@ -4974,18 +5451,26 @@ window.openProduct = function(id) {
   document.getElementById('detail-stars').textContent = starsHTML(p.rating||0);
   document.getElementById('detail-review-count').textContent = `(${p.reviewCount||0} reviews)`;
   const stockEl = document.getElementById('detail-stock');
+  const notifyWrap = document.getElementById('notify-stock-wrap');
   if(!p.stock || p.stock <= 0) {
     stockEl.innerHTML = '<i class="fas fa-times-circle"></i> Out of Stock';
     stockEl.className = 'detail-stock out';
+    if(!p.preorderEnabled) { notifyWrap.classList.remove('hidden'); }
+    else { notifyWrap.classList.add('hidden'); }
+    document.getElementById('notify-stock-form').classList.remove('hidden');
+    document.getElementById('notify-stock-done').classList.add('hidden');
   } else if(p.stock <= 5) {
     stockEl.innerHTML = '<i class="fas fa-fire" style="color:#ef4444"></i> Only '+p.stock+' left — Order now!';
     stockEl.className = 'detail-stock'; stockEl.style.color='#ef4444';
+    notifyWrap.classList.add('hidden');
   } else if(p.stock <= 15) {
     stockEl.innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#f59e0b"></i> Almost sold out! ('+p.stock+' left)';
     stockEl.className = 'detail-stock'; stockEl.style.color='#f59e0b';
+    notifyWrap.classList.add('hidden');
   } else {
     stockEl.innerHTML = '<i class="fas fa-check-circle"></i> In Stock ('+p.stock+' available)';
     stockEl.className = 'detail-stock'; stockEl.style.color='';
+    notifyWrap.classList.add('hidden');
   }
   document.getElementById('detail-description').textContent = p.description||'No description available.';
   document.getElementById('qty-input').value = 1;
@@ -5034,6 +5519,13 @@ window.openProduct = function(id) {
   // Related
   const related = allProducts.filter(x=>x.id!==id && x.category===p.category).slice(0,4);
   renderProductGrid('related-grid', related);
+  // Reset subscribe & save toggle for the new product
+  const subToggle = document.getElementById('subscribe-save-toggle');
+  if(subToggle) subToggle.checked = false;
+  document.getElementById('subscribe-save-freq').classList.add('hidden');
+  window._subscribeSave = false;
+  // Frequently Bought Together
+  renderFrequentlyBought(p);
   // Review form
   document.getElementById('review-form-wrap').classList.toggle('hidden', !currentUser);
   document.getElementById('login-to-review').classList.toggle('hidden', !!currentUser);
@@ -5105,10 +5597,12 @@ async function saveCart() {
   } catch(e){}
 }
 
-window.quickAddToCart = function(productId) {
+window.quickAddToCart = function(productId, evt) {
   if(!currentUser) { showToast('Please sign in to add to cart','info'); navigate('login'); return; }
   const p = allProducts.find(x=>x.id===productId);
   if(!p) return;
+  if (evt && evt.currentTarget) flyToCart(evt.currentTarget);
+  trackEvent('add_to_cart', { currency:'NGN', value: p.price||0, items:[{item_id:p.id,item_name:p.name}] });
   const existing = cart.find(x=>x.productId===productId);
   if(existing) {
     existing.qty = Math.min(existing.qty+1, p.stock||99);
@@ -5147,24 +5641,102 @@ window.addToCartFromDetail = function() {
     showToast('Please select a colour','error'); return;
   }
   const qty = parseInt(document.getElementById('qty-input').value)||1;
-  const price = getEffectivePrice(p).displayPrice;
+  let price = getEffectivePrice(p).displayPrice;
+  const isSubscribed = !!window._subscribeSave;
+  const subFrequency = isSubscribed ? (document.getElementById('subscribe-frequency')?.value || 'monthly') : '';
+  if (isSubscribed) price = Math.round(price * 0.9);
   const size = window._selectedSize||'';
   const colour = window._selectedColour||'';
   // Cart key includes size+colour so each variant is separate
-  const variantKey = p.id + (size?'_'+size:'') + (colour?'_'+colour:'');
+  const variantKey = p.id + (size?'_'+size:'') + (colour?'_'+colour:'') + (isSubscribed?'_sub':'');
   const existing = cart.find(x=>x.variantKey===variantKey);
   const variantLabel = [size, colour].filter(Boolean).join(' / ');
   if(existing) {
     existing.qty = Math.min(existing.qty+qty, p.stock||99);
   } else {
-    cart.push({ productId: p.id, variantKey, name: p.name, price, image: (p.images&&p.images[0])||'', qty, size, colour, variantLabel });
+    cart.push({ productId: p.id, variantKey, name: p.name, price, image: (p.images&&p.images[0])||'', qty, size, colour, variantLabel, subscribe: isSubscribed, subscribeFrequency: subFrequency });
   }
   // Reset selections
   window._selectedSize = '';
   window._selectedColour = '';
   saveCart();
   updateCartBadge();
-  showToast(`${p.name}${variantLabel?' ('+variantLabel+')':''} added to cart!`);
+  flyToCart(document.getElementById('detail-add-btn'));
+  trackEvent('add_to_cart', { currency:'NGN', value: price*qty, items:[{item_id:p.id,item_name:p.name,quantity:qty}] });
+  showToast(`${p.name}${variantLabel?' ('+variantLabel+')':''}${isSubscribed?' — subscribed & saved 10%!':''} added to cart!`);
+};
+
+// ===== SUBSCRIBE & SAVE =====
+window.toggleSubscribeSave = function() {
+  const checked = document.getElementById('subscribe-save-toggle').checked;
+  window._subscribeSave = checked;
+  document.getElementById('subscribe-save-freq').classList.toggle('hidden', !checked);
+};
+
+// ===== NOTIFY ME WHEN BACK IN STOCK =====
+window.requestStockNotify = async function() {
+  if(!currentUser) { showToast('Please sign in to get notified','info'); navigate('login'); return; }
+  if(!currentProduct) return;
+  try {
+    await addDoc(collection(db,'stock_notify'), {
+      productId: currentProduct.id, productName: currentProduct.name||'',
+      uid: currentUser.uid, email: currentUser.email||'',
+      notified: false, createdAt: serverTimestamp()
+    });
+    document.getElementById('notify-stock-form').classList.add('hidden');
+    document.getElementById('notify-stock-done').classList.remove('hidden');
+    showToast('We\'ll notify you when it\'s back in stock!');
+  } catch(e) {
+    showToast('Could not save your request: '+friendlyError(e),'error');
+  }
+};
+
+// ===== FREQUENTLY BOUGHT TOGETHER =====
+function renderFrequentlyBought(p) {
+  const wrap = document.getElementById('fbt-wrap');
+  const itemsEl = document.getElementById('fbt-items');
+  const others = allProducts.filter(x=>x.id!==p.id && x.category===p.category && (x.stock||0)>0).slice(0,2);
+  if(!others.length) { wrap.classList.add('hidden'); return; }
+  wrap.classList.remove('hidden');
+  const all = [p, ...others];
+  itemsEl.innerHTML = all.map((item,i)=>{
+    const ep = getEffectivePrice(item).displayPrice;
+    const img = (item.images&&item.images[0]) || 'https://placehold.co/60x60/f5f5f5/cccccc?text=Fedew';
+    return `<label style="display:flex;align-items:center;gap:8px;padding:6px 0;cursor:pointer;font-size:12px">
+      <input type="checkbox" class="fbt-check" data-price="${ep}" ${i===0?'checked disabled':'checked'} onchange="updateFbtTotal()" style="width:16px;height:16px;accent-color:var(--orange)">
+      <img src="${img}" style="width:38px;height:38px;object-fit:cover;border-radius:6px;flex-shrink:0" onerror="this.src='https://placehold.co/60x60/f5f5f5/cccccc?text=Fedew'">
+      <span style="flex:1;color:var(--gray-700);font-weight:600">${item.name}${i===0?' <span style="color:var(--gray-400);font-weight:400">(this item)</span>':''}</span>
+      <span style="font-weight:800;color:var(--orange);white-space:nowrap">₦${ep.toLocaleString()}</span>
+    </label>`;
+  }).join('');
+  window._fbtProducts = all;
+  updateFbtTotal();
+}
+window.updateFbtTotal = function() {
+  const checks = document.querySelectorAll('.fbt-check');
+  let total = 0;
+  checks.forEach(c=>{ if(c.checked) total += Number(c.dataset.price||0); });
+  const totalEl = document.getElementById('fbt-total');
+  if(totalEl) totalEl.textContent = '₦'+total.toLocaleString();
+};
+window.addBundleToCart = function() {
+  if(!currentUser) { showToast('Please sign in to add to cart','info'); navigate('login'); return; }
+  const checks = document.querySelectorAll('.fbt-check');
+  const products = window._fbtProducts || [];
+  let count = 0;
+  checks.forEach((c,i)=>{
+    if(!c.checked) return;
+    const item = products[i];
+    if(!item) return;
+    const price = getEffectivePrice(item).displayPrice;
+    const existing = cart.find(x=>x.variantKey===item.id && !x.size && !x.colour);
+    if(existing) { existing.qty += 1; } else { cart.push({ productId: item.id, variantKey: item.id, name: item.name, price, image:(item.images&&item.images[0])||'', qty:1, size:'', colour:'', variantLabel:'' }); }
+    count++;
+  });
+  saveCart();
+  updateCartBadge();
+  flyToCart(document.querySelector('#fbt-wrap .btn-primary'));
+  showToast(`${count} item${count===1?'':'s'} added to cart!`);
 };
 
 // Size & Colour selection
@@ -5567,6 +6139,23 @@ window.placeOrder = async function() {
     if(appliedCoupon && appliedCoupon.firestoreId) {
       try { await updateDoc(doc(db,'coupons',appliedCoupon.firestoreId), { usageCount: (appliedCoupon.usageCount||0)+1 }); } catch(e) {}
     }
+    // Create subscription records for any "Subscribe & Save" items in this order
+    for(const item of itemsCopy) {
+      if(!item.subscribe) continue;
+      try {
+        const next = new Date();
+        if(item.subscribeFrequency === 'biweekly') next.setDate(next.getDate()+14); else next.setMonth(next.getMonth()+1);
+        await addDoc(collection(db,'subscriptions'), {
+          uid: currentUser.uid, userEmail: currentUser.email,
+          productId: item.productId, productName: item.name, qty: item.qty, price: item.price,
+          frequency: item.subscribeFrequency||'monthly', status: 'active',
+          nextDate: next.toISOString(), originOrderId: orderId,
+          createdAt: serverTimestamp()
+        });
+      } catch(e) { console.warn('Subscription create failed', e); }
+    }
+    // Process referral reward (only on the customer's very first completed order)
+    processReferralReward(grandTotal).catch(e=>console.warn('Referral reward error', e));
     // Clear cart
     cart = [];
     await saveCart();
@@ -5589,8 +6178,10 @@ window.placeOrder = async function() {
     setTimeout(()=>{
       notifyBuyerWhatsApp(addr.phone||'', orderId, 'pending', itemNames, addr.name||currentUser.email.split('@')[0], grandTotal, deliveryFee, dType);
     }, 2000);
+    trackEvent('purchase', { currency:'NGN', value: grandTotal, transaction_id: orderId, items: itemsCopy.map(x=>({item_id:x.productId,item_name:x.name,quantity:x.qty,price:x.price})) });
     showReceipt(orderId, orderData);
     navigate('success');
+    fireConfetti();
     showToast('Order placed successfully! 🎉');
   } catch(e) {
     console.error('placeOrder error:', e);
@@ -5675,6 +6266,9 @@ async function placeOrderAfterPaystack(paystackRef) {
 }
 
 function showReceipt(orderId, data) {
+  window._ordersCache = window._ordersCache || {};
+  window._ordersCache['__last__'] = data;
+  window._lastOrderId = orderId;
   const wrap = document.getElementById('receipt-wrap');
   const deliveryFee = data.deliveryFee || 0;
   const subtotal = data.subtotal || 0;
@@ -5703,6 +6297,95 @@ function showReceipt(orderId, data) {
 
 window.printReceipt = function() { window.print(); };
 
+// ===== PDF INVOICE DOWNLOAD =====
+async function ensureJsPDF() {
+  if (window.jspdf && window.jspdf.jsPDF) return;
+  await new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  });
+}
+
+window.downloadInvoicePDF = async function(orderKey) {
+  const data = orderKey === '__last__' ? window._ordersCache?.['__last__'] : window._ordersCache?.[orderKey];
+  if (!data) { showToast('Invoice data not available','error'); return; }
+  const orderId = orderKey === '__last__' ? window._lastOrderId : (data.orderId || orderKey);
+  try {
+    showToast('Preparing your invoice...','info');
+    await ensureJsPDF();
+    const { jsPDF } = window.jspdf;
+    const docPdf = new jsPDF({ unit:'pt', format:'a4' });
+    const pageWidth = docPdf.internal.pageSize.getWidth();
+    let y = 50;
+    // Header
+    docPdf.setFont('helvetica','bold'); docPdf.setFontSize(20); docPdf.setTextColor(11,31,58);
+    docPdf.text('FEDEW FOOD HUB', 40, y);
+    docPdf.setFont('helvetica','normal'); docPdf.setFontSize(10); docPdf.setTextColor(90,90,90);
+    y += 16; docPdf.text('Alakia, Ibadan, Oyo State, Nigeria', 40, y);
+    y += 14; docPdf.text('Phone: +2347058990143  ·  Email: ferdew31@gmail.com', 40, y);
+    docPdf.setDrawColor(210,105,30); docPdf.setLineWidth(1.5);
+    y += 14; docPdf.line(40, y, pageWidth-40, y);
+    // Invoice title + meta
+    y += 30; docPdf.setFont('helvetica','bold'); docPdf.setFontSize(15); docPdf.setTextColor(20,20,20);
+    docPdf.text('INVOICE', 40, y);
+    docPdf.setFont('helvetica','normal'); docPdf.setFontSize(10); docPdf.setTextColor(90,90,90);
+    docPdf.text('Order ID: '+(orderId||'—'), pageWidth-40, y-14, { align:'right' });
+    docPdf.text('Date: '+new Date().toLocaleDateString('en-NG'), pageWidth-40, y, { align:'right' });
+    y += 10;
+    docPdf.text('Billed to: '+(data.address?.name || data.userEmail || 'Customer'), 40, y+16);
+    docPdf.text('Payment: '+(data.payment==='bank'?'Bank Transfer':data.payment==='wallet'?'Wallet':data.payment==='cod'?'Pay on Delivery':(data.payment||'—')), 40, y+30);
+    y += 50;
+    // Table header
+    docPdf.setFillColor(245,245,245);
+    docPdf.rect(40, y, pageWidth-80, 22, 'F');
+    docPdf.setFont('helvetica','bold'); docPdf.setFontSize(10); docPdf.setTextColor(20,20,20);
+    docPdf.text('Item', 48, y+15);
+    docPdf.text('Qty', pageWidth-220, y+15);
+    docPdf.text('Unit Price', pageWidth-160, y+15);
+    docPdf.text('Total', pageWidth-60, y+15, { align:'right' });
+    y += 32;
+    docPdf.setFont('helvetica','normal');
+    (data.items||[]).forEach(item=>{
+      docPdf.text(String(item.name||'').slice(0,40), 48, y);
+      docPdf.text(String(item.qty||1), pageWidth-220, y);
+      docPdf.text('₦'+(item.price||0).toLocaleString(), pageWidth-160, y);
+      docPdf.text('₦'+((item.price||0)*(item.qty||1)).toLocaleString(), pageWidth-60, y, { align:'right' });
+      y += 20;
+    });
+    y += 8; docPdf.setDrawColor(220,220,220); docPdf.line(40, y, pageWidth-40, y); y += 20;
+    const row = (label, val, bold) => {
+      docPdf.setFont('helvetica', bold?'bold':'normal');
+      docPdf.text(label, pageWidth-220, y);
+      docPdf.text(val, pageWidth-60, y, { align:'right' });
+      y += 18;
+    };
+    row('Subtotal', '₦'+(data.subtotal||0).toLocaleString());
+    if (data.couponDiscount) row('Coupon Discount', '-₦'+data.couponDiscount.toLocaleString());
+    if (data.loyaltyDiscount) row('Loyalty Points', '-₦'+data.loyaltyDiscount.toLocaleString());
+    docPdf.setTextColor(210,105,30);
+    row('Grand Total', '₦'+(data.total||0).toLocaleString(), true);
+    docPdf.setTextColor(90,90,90);
+    // Bank details footer if applicable
+    if (data.payment === 'bank') {
+      y += 20;
+      docPdf.setFont('helvetica','bold'); docPdf.setFontSize(10); docPdf.text('Bank Transfer Details:', 40, y);
+      y += 16; docPdf.setFont('helvetica','normal');
+      docPdf.text('Bank: '+(_accountDetails.bankName||''), 40, y); y += 14;
+      docPdf.text('Account Name: '+(_accountDetails.accountName||''), 40, y); y += 14;
+      docPdf.text('Account Number: '+(_accountDetails.accountNumber||''), 40, y); y += 14;
+      docPdf.text('Reference: '+(orderId||''), 40, y);
+    }
+    docPdf.setFontSize(9); docPdf.setTextColor(150,150,150);
+    docPdf.text('Thank you for shopping with Fedew Food Hub!', 40, docPdf.internal.pageSize.getHeight()-40);
+    docPdf.save('Invoice-'+(orderId||'order')+'.pdf');
+  } catch(e) {
+    console.error('PDF invoice error', e);
+    showToast('Could not generate PDF invoice','error');
+  }
+};
+
 // ===== ORDERS =====
 window.loadOrders = async function() {
   if(!currentUser) { navigate('login'); return; }
@@ -5725,6 +6408,8 @@ window.loadOrders = async function() {
     });
     const ordersHtml = sorted.map(d=>{
       const o = d.data();
+      window._ordersCache = window._ordersCache || {};
+      window._ordersCache[d.id] = o;
       const statusClass = {'pending':'status-pending','confirmed':'status-confirmed','processing':'status-processing','out_for_delivery':'status-out','delivered':'status-delivered','cancelled':'status-cancelled'}[o.status]||'status-pending';
       const canCancel = ['pending','confirmed'].includes(o.status||'pending');
       const canReturn = o.status === 'delivered';
@@ -5740,6 +6425,7 @@ window.loadOrders = async function() {
           <span class="order-total">₦${(o.total||0).toLocaleString()}</span>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
             <button class="track-order-btn" onclick="showTrackingModal('${o.orderId||d.id}')"><i class="fas fa-truck"></i> Track</button>
+            <button style="background:var(--gray-100);border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;color:var(--gray-700)" onclick="downloadInvoicePDF('${d.id}')"><i class="fas fa-file-pdf"></i> Invoice</button>
             <button style="background:var(--gray-100);border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;color:var(--gray-700)" onclick="reorderItems('${d.id}')"><i class="fas fa-redo"></i> Reorder</button>
             ${canCancel ? '<button style="background:none;border:2px solid var(--red);color:var(--red);border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer" onclick="cancelOrder(\''+d.id+'\',\''+o.orderId+'\')"><i class="fas fa-times"></i> Cancel</button>' : ''}
             ${canReturn ? '<button style="background:none;border:2px solid #F2994A;color:#F2994A;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer" onclick="requestReturn(\''+d.id+'\',\''+o.orderId+'\')"><i class="fas fa-undo"></i> Return</button>' : ''}
@@ -7316,6 +8002,7 @@ window.switchAdminTab = function(tab, btn) {
   else if(tab==='wallets') loadAdminWallets();
   else if(tab==='paystack') loadPaystackSettings();
   else if(tab==='bankdetails') loadAccountDetails();
+  else if(tab==='extras') loadAdminExtras();
 };
 
 
@@ -8018,7 +8705,8 @@ let _navBusy = false;
 
 function _showPage(page) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const el = document.getElementById('page-'+page);
+  let el = document.getElementById('page-'+page);
+  if(!el) { el = document.getElementById('page-notfound'); page = 'notfound'; }
   if(el) el.classList.add('active');
   document.querySelectorAll('.bnav-item').forEach(b=>b.classList.remove('active'));
   const bnav = document.getElementById('bnav-'+page);
@@ -8034,6 +8722,8 @@ function _showPage(page) {
   if(page==='admin') { loadAdminProducts(); loadAdminStats(); loadAdminOrders(); updatePWResetBadge(); }
   if(page==='profile') loadUserProfile();
   if(page==='wallet') { loadWalletBalance(); loadWalletTransactions(); loadPaystackSettings(); }
+  if(page==='referral') { if(!currentUser) { navigate('login'); return; } loadReferralPage(); }
+  if(page==='subscriptions') { if(!currentUser) { navigate('login'); return; } loadMySubscriptions(); }
   if(page==='forgot') {
     // Reset forgot password form state
     const fw = document.getElementById('forgot-form-wrap');
